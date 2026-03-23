@@ -245,7 +245,7 @@
 
 <script>
 const GEMINI_KEY='AIzaSyAduQ6gV-UzOqRcd5C8soJjhpPeaRNCQuw';
-const GEMINI_URL=`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_KEY}`;
+const GEMINI_URL=`https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent`;
 const SK='inkborn_stories';
 const GENRES=['Dark Fantasy','Sci-Fi','Horror','Romance','Mystery','Adventure','Thriller'];
 let isNight=false,bookOpen=false,idleT=null,currentId=null,storyLocked=false,isGenerating=false;
@@ -265,7 +265,7 @@ Guidelines:
 
   const res=await fetch(GEMINI_URL,{
     method:'POST',
-    headers:{'Content-Type':'application/json'},
+    headers:{'Content-Type':'application/json','x-goog-api-key':GEMINI_KEY},
     body:JSON.stringify({
       contents:[{parts:[{text:`${systemPrompt}\n\nStory prompt: ${prompt}\nTitle: ${title}`}]}],
       generationConfig:{temperature:0.9,maxOutputTokens:800}
